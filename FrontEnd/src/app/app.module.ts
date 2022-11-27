@@ -6,13 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RouterModule ,Routes } from '@angular/router';
+import { AdminLoginComponent } from './components/pages/admin-login/admin-login.component';
 
 const appRoutes=[{path:"",component:HomeComponent}]
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
