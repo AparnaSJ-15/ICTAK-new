@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RouterModule ,Routes } from '@angular/router';
 
-
+const appRoutes=[{path:"",component:HomeComponent}]
 
 @NgModule({
   declarations: [
