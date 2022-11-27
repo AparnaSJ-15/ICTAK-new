@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RouterModule ,Routes } from '@angular/router';
-import { AdminLoginComponent } from './components/pages/admin-login/admin-login.component';
+import { AdminLoginComponent } from './pages/admin-login';
 
 const appRoutes=[{path:"",component:HomeComponent}]
 
