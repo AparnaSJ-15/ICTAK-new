@@ -1,14 +1,15 @@
 <div class="container">
-    <div class="col-12">
+    <div class="col-6">
         <h2>Login</h2>
         <form>
             <div class="form-group">
                 <label for="exampleInputEmail1">Enter your Username</label>
-                <input type="email" placeholder=" Ex:-abc@gmail.com" class="form-control" id="exampleInputEmail1"
+                <input type="email" placeholder=" Ex:-abc@gmail.com" class="form-control" name="email" id="exampleInputEmail1"
                     aria-describedby="emailHelp" required>
                 <br>
                 <label for="exampleInputPassword1">Enter your Password</label>
-                <input type="text" class="form-control" placeholder="********" id="exampleInputPassword1" required>
+                <input type="password" class="form-control" placeholder="********" minlength="6" name="pwd"  id="exampleInputPassword1" required>
+                
             </div>
             <br>
             <button type="submit" class="btn rounded  btn-warning">Login</button>
