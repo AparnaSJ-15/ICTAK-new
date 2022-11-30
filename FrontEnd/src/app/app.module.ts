@@ -9,9 +9,7 @@ import { RouterModule ,Routes } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { FacloginComponent } from './pages/faclogin/faclogin.component';
-import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
-
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
@@ -20,9 +18,8 @@ import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    FacloginComponent,
-    AdminLoginComponent
-  ],
+    LoginComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
