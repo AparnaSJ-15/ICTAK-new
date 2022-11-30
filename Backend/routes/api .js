@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router() //routing function
 const jwt = require('jsonwebtoken');
 
-const logindata = require('./src/Model/login');
-const signupdata = require('./src/Model/signup');
+const logindata = require('../src/Model/login');
+const signupdata = require('../src/Model/signup');
 
 function verifyToken(req,res,next){
     console.log("🚀 ~ file: app.js ~ line 38 ~ verifyToken ~ req.headers.authorization", req.headers.authorization)
@@ -30,19 +30,27 @@ function verifyToken(req,res,next){
 }
 
 //signup
-router.post((req,res)=>{
+router.post('/signup',async(req,res)=>{
  res.header("Access-Control-Allow-Origin","*");
  res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH");
 var user ={
     username: req.body.user.username,
     password: req.body.user.password
 }    
-console.log(user)
+
 var user = new signupdata(user);
-user.save();
+const saveduser=await user.save();
+console.log('saved data : ',saveduser)
 })
-.get((req,res)=>{
-    res.send("Hello")
+router.get('/signuplist',(req,res)=>{
+    try{
+            signupdata.find().then(function(data){
+            res.send(data);
+        })
+    }
+    catch(error){
+        console.log(error)
+    }
 })
 
 
