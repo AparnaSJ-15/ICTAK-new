@@ -8,7 +8,7 @@ const connectionParams = {
 
 mongoose.connect(dbUrl, connectionParams)
     .then(() => {
-        console.log("login Database connected");
+        console.log("Project Database connected");
     })
     .catch(() => {
         console.log("error");
