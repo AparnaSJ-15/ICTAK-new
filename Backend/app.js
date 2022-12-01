@@ -22,7 +22,8 @@ app.use(express.urlencoded({extended:true}));
 
 const api = require('./routes/api');
 app.use('/api',api);
-
+const requirement = require('./routes/requirement');
+app.use('/requirement',requirement);
 //connection to server
 const PORT=3000;
 app.listen(PORT, function() {
