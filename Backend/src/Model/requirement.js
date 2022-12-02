@@ -22,17 +22,17 @@ const RequireSchema = new Schema({
         required:true
     },
     reference:{
-        data: Buffer,
-        contentType: String,
+        type:String,
+        required:true
        
     },
     comments:{
         type:String,
-        required:true
+        
     },
     file: {
-        data: Buffer,
-        contentType: String,
+        type:String,
+       
       
     }
 

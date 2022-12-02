@@ -1,32 +1,7 @@
 const express=require('express');
-const router = express.Router() 
-const multer = require('multer');
-const path = require('path');
-
+const router = express.Router(); 
+const {upload} =require('../middlewares/upload')
 const RequireData = require("../src/Model/requirement");
-
-var storage =   multer.diskStorage({  
-    destination: function (req, file, callback) {  
-      callback(null, './upload');  
-    },  
-    filename: function (req, file, callback) {  
-      callback(null, file.originalname);  
-    }  
-  });  
-var upload = multer({ storage : storage,fileFilter: function (req, file,cb){var filetypes = /pdf|doc|xls/;
-var mimetype = filetypes.test(file.mimetype);
-  
-var extname = filetypes.test(path.extname(
-            file.originalname).toLowerCase());
-            if (mimetype && extname) {
-                return cb(null, true);
-            }
-          
-            cb("Error: File upload only supports the "
-                    + "following filetypes - " + filetypes);
-
-}
-});  
 
 router.get("/api/requirements", (req, res) => {
     RequireData.find((error, data) => {
@@ -37,16 +12,23 @@ router.get("/api/requirements", (req, res) => {
       }
     });
   });
- router.post('/api/uploadfile', upload.array('myfile'), function (req, res) {
-    const { name, area,institution,category,no_of_hours } = req.body;
-  let data=req.body;
-    const uploadInfo = req.files.map(file => {
-      return {data,
-        sourceName: file.originalname,
-        newName: file.filename
-      };
-    });
-    res.send(uploadInfo);
-  });
+router.post('/api/uploadfile',upload.single('file'), async (req, res) => {
+    try{
+        
+        const file = new RequireData({
+            name: req.body.name,
+            area: req.body.area,
+            institution: req.body.institution,
+            category:req.body.category,
+            no_of_hours:req.body.no_of_hours,
+          reference:req.file.originalname
+        });
+        await file.save();
+        res.status(201).send('File Uploaded Successfully');
+        console.log(file)
+    }catch(error) {
+        res.status(400).send(error.message);
+    }
+})
   module.exports = router
   

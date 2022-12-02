@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = new express();
-require('./middleware/mongodb') //to init mongoDB
+require('./middlewares/mongodb') //to init mongoDB
 
 const cors = require('cors');
 
