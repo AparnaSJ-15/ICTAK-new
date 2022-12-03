@@ -8,9 +8,12 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  bgImage:String ="../../../assets/images/bg1.jpg";
 
   constructor(private router : Router) { }
 
   ngOnInit(): void {
   }
 }
+
+
