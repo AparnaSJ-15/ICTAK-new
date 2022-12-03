@@ -24,6 +24,10 @@ const api = require('./routes/api');
 app.use('/api',api);
 const requirement = require('./routes/requirement');
 app.use('/requirement',requirement);
+
+const response = require('./routes/apiresponse');
+app.use('/apiresponse',response)
+
 //connection to server
 const PORT=3000;
 app.listen(PORT, function() {
