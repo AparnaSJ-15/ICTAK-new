@@ -5,9 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-<<<<<<< HEAD
-import { SignupFacaultyComponent } from './pages/signup-facaulty/signup-facaulty.component';
-=======
 import {MatCardModule} from '@angular/material/card';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -23,20 +20,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
 
->>>>>>> 1c20d84d951c845d8aa44be59e0b75af35c51b3f
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-<<<<<<< HEAD
-    SignupFacaultyComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-=======
     HeaderComponent,
     FooterComponent,
     LoginComponent,
@@ -59,7 +47,6 @@ import {MatButtonModule} from '@angular/material/button';
     MatNativeDateModule,
     MatButtonModule
     
->>>>>>> 1c20d84d951c845d8aa44be59e0b75af35c51b3f
   ],
   providers: [],
   bootstrap: [AppComponent]

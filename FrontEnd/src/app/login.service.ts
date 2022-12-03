@@ -9,9 +9,9 @@ export class LoginService {
   constructor(private http:HttpClient) { }
   server_address: string = 'http://localhost:4200';
   
-  // getusers(){
-  //   return this.http.get(`${this.server_address}/getusers`);
-  // }
+  getusers(){
+    return this.http.get(`${this.server_address}/getusers`);
+  }
 
   signup(user:any){
     console.log(user)

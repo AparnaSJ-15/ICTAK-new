@@ -34,7 +34,7 @@ router.post('/signup',async(req,res)=>{
  res.header("Access-Control-Allow-Origin","*");
  res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH");
 var user ={
-    username: req.body.user.username,
+    username: req.body.user.name,
     password: req.body.user.password
 }    
 
@@ -59,9 +59,9 @@ router.get('/signuplist',(req,res)=>{
 router.post((req,res)=>{
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH");
-    let name = req.body.user.username;
+    let name = req.body.user.name;
     let password = req.body.user.password;
-    logindata.findOne({username:req.body.user.username, password:req.body.user.password},(err,user)=>{
+    logindata.findOne({username:req.body.user.name, password:req.body.user.password},(err,user)=>{
         if(err)
         console.log(err)
          if(user)
