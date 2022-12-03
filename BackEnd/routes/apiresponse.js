@@ -6,7 +6,7 @@ const pastDATA = require('../src/Model/past')
 const {upload} =require('../middlewares/upload')
 
 
-// full list read 
+// full list read
 router.get('/listresponse', async (req, res) => {
 
     try{
@@ -106,6 +106,13 @@ router.get('/singlepast/:id', async (req, res) => {
     }
 
 })
+
+
+
+
+
+
+
 
 
 
