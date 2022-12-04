@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class LoginService {
 
   constructor(private http:HttpClient) { }
-  server_address: string = 'api';
+  server_address: string = 'http://localhost:3000/api';
   
   getusers(){
     return this.http.get(`${this.server_address}/getusers`);

@@ -22,15 +22,7 @@ export class SignupComponent implements OnInit {
     password: "",
     repassword:""
   }
-  Users=[{
-    name:"",
-    username:"",
-    gender:"",
-    dob:"",
-    phone:"",
-    password: "",
-    repassword:""
-  }];
+  Users:any;
   error:any;
   flag:any
   constructor(private formBuilder: FormBuilder,private loginservice:LoginService,private route:Router) { }
