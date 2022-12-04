@@ -30,5 +30,19 @@ router.post('/api/uploadfile',upload.single('file'), async (req, res) => {
         res.status(400).send(error.message);
     }
 })
+
+router.get("/search/:name",async(req,res,next)=>{
+  let name=req.params.name
+  console.log(req.params.name)
+  RequireData.find({name:name})
+  .then(result=>{
+      res.status(200).json(result)
+  })
+  .catch(err=>{
+      console.log(err)
+      res.status(500).json(err)
+  })
+})
+
   module.exports = router
   
