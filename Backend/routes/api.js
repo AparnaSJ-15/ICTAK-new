@@ -28,14 +28,28 @@ function verifyToken(req,res,next){
     console.log(req.userId);
     next();
 }
+router.get("/api/getusers",(req,res)=>{
+ res.header("Access-Control-Allow-Origin","*");
+ res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH");
+users.find()
+.then(data=>{
+    res.send(data);
+})
+});
+
 
 //signup
-router.post('/signup',async(req,res)=>{
+router.post('/api/signup',async(req,res)=>{
  res.header("Access-Control-Allow-Origin","*");
  res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH");
 var user ={
-    username: req.body.user.name,
-    password: req.body.user.password
+    name: req.body.user.name,
+    username: req.body.user.email,
+    gender:req.body.user.gender,
+    dob: req.body.user.dob,
+    phone: req.body.user.phone,
+    password: req.body.user.password,
+    confirm_password:req.body.user.confirmPassword
 }    
 
 var user = new signupdata(user);
@@ -56,22 +70,22 @@ router.get('/signuplist',(req,res)=>{
 
 
 //login
-router.post((req,res)=>{
+router.post('/api/login',(req,res)=>{
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH");
-    let name = req.body.user.name;
+    let username = req.body.user.email;
     let password = req.body.user.password;
-    logindata.findOne({username:req.body.user.name, password:req.body.user.password},(err,user)=>{
+    logindata.findOne({username:req.body.user.email, password:req.body.user.password},(err,user)=>{
         if(err)
         console.log(err)
          if(user)
              {
-            let payload = {subject:name+password};
+            let payload = {subject:username+password};
             let token = jwt.sign(payload,"secretkey");
             console.log("🚀 ~ file: app.js ~ line 104 ~ logindata.findOne ~ token", token)
             console.log("🚀 ~ file: app.js ~ line 104 ~ logindata.findOne ~ payload", payload)
             console.log(token);
-            res.send();
+            res.status(200).send({token});
         }
         else
         res.status(401).json({

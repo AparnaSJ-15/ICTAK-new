@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class LoginService {
 
   constructor(private http:HttpClient) { }
-  server_address: string = 'http://localhost:4200';
+  server_address: string = 'api';
   
   getusers(){
     return this.http.get(`${this.server_address}/getusers`);
@@ -28,6 +28,7 @@ export class LoginService {
   loggedIn(){
     return !! localStorage.getItem('userToken');
   }
+  
 
   getUserToken(){
     return  localStorage.getItem('userToken');

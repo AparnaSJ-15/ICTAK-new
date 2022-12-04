@@ -1,9 +1,10 @@
-<div class="container" style="padding-top: 5rem; padding-left: 35rem; width: 400px;">
+
+ <form class="example-form" (ngSubmit)="onSubmit()">
+<div class="container" >
   <mat-card>
-    <form class="example-form" (ngSubmit)="onSubmit()">
         <h1>Sign Up</h1>
     <div class="row" [formGroup]="registerForm" >
-        <div class="col-6">
+        <div class="mb-3">
                 <mat-form-field class="example-full-width" appearance="fill" style="width:100% ;">
                   <mat-label>Name</mat-label>
                   <input matInput placeholder="Type your name here !" class="form-control" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
@@ -12,7 +13,7 @@
                 </div>
                 </mat-form-field> 
         </div>
-        <div class="col-6">
+        <div class="mb-3">
             <mat-form-field class="example-full-width" appearance="fill" style="width:100% ;">
               <mat-label>Username</mat-label>
               <input matInput placeholder="Please type your Email" required class="form-control" formControlName="email"[ngClass]="{ 'is-invalid': submitted && f['email'].errors }" class="FormControl">
@@ -22,16 +23,16 @@
             </div>
             </mat-form-field> 
         </div>
-        <div class="col-6">
+        <div class="mb-3">
             <label id="example-radio-group-label">Select your gender</label><br><br>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" style="width: 100%;padding: 2px;" >
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" style="width: 100%;padding: 1px;" >
               <mat-radio-button class="example-radio-button" *ngFor="let gender of genders" [value]="gender">
                 {{gender}}
               </mat-radio-button>
             </mat-radio-group>
         </div>
         <br>
-        <div class="col-6">
+        <div class="mb-3">
             <label id="example-radio-group-label">Select your date of birth</label>
 <br>
             <mat-form-field appearance="fill">
@@ -42,7 +43,7 @@
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>    
         </div>
-        <div class="col-6">
+        <div class="mb-3">
             <mat-form-field class="example-full-width" appearance="fill" style="width:100% ;">
               <mat-label>Phone Number</mat-label>
               <input matInput placeholder="" (keypress)="keyPress($event)" required type="text" formControlName="phonenumber" class="form-control" placeholder="Enter Your phone Number" [ngClass]="{ 'is-invalid': submitted && f['phonenumber'].errors }" >
@@ -52,7 +53,7 @@
              </div>
             </mat-form-field> 
     </div>
-    <div class="col-6">
+    <div class="mb-3">
         <mat-form-field class="example-full-width" appearance="fill" style="width:100% ;">
           <mat-label>Password</mat-label>
           <input matInput type="password" placeholder="password" class="form-control" required>
@@ -62,7 +63,7 @@
         </div>
         </mat-form-field> 
     </div>
-    <div class="col-6">
+    <div class="mb-3">
         <mat-form-field class="example-full-width" appearance="fill" style="width:100% ;">
           <mat-label>Confirm Password</mat-label>
           <input matInput type="password" placeholder="Re-enter password" class="form-control" required>
@@ -72,10 +73,10 @@
         </div>
         </mat-form-field> 
     </div>
-    <div class="col-6" style=" display: table-cell; width: 490px; padding-left: 8rem;">
+    <div class="mb-3" style=" display: table-cell; width: 490px; padding-left: 8rem;">
         <button mat-raised-button style="border-radius: 5px; ">Sign Up</button>
     </div>
     </div>
-</form>
   </mat-card>  
 </div>
+</form>

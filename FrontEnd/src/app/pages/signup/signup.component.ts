@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
     phone:"",
     password: "",
     repassword:""
-  }]
+  }];
   error:any;
   flag:any
   constructor(private formBuilder: FormBuilder,private loginservice:LoginService,private route:Router) { }
@@ -84,7 +84,7 @@ export class SignupComponent implements OnInit {
          this.flag=false;
         this.loginservice.signup(this.user);
         console.log("signup called");
-        this.route.navigate(['/login']);
+        this.route.navigate(['/']);
 
   this.submitted = true;
   // stop here if form is invalid
