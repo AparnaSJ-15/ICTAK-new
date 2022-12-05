@@ -23,17 +23,12 @@ export class LoginComponent implements OnInit {
   loginUser(){
     this.loginservice.login(this.user).subscribe(res=>{
        this.id = JSON.parse(JSON.stringify(res.token));
-      // localStorage.setItem('userToken',this.id);
-      if(this.user.username=="admin@gmail.com" && this.user.password=="admin@1234"){
-        this.route.navigate(["/admin-home"])
-      }
-      else
-      {
+       localStorage.setItem('userToken',this.id);
+      
         this.route.navigate(["/faculty-home"]),
         (    err: { message: any; error: { message: any; }; })=>{
       console.log(err.message);
       this.message = err.error.message;
-        }
     }
   })
 }

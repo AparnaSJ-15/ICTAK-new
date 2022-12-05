@@ -1,12 +1,13 @@
 const express = require('express')
 const router = express.Router() //routing function
 const jwt = require('jsonwebtoken');
+ 
 
 const logindata = require('../src/Model/login');
 const signupdata = require('../src/Model/signup');
 
 function verifyToken(req,res,next){
-    console.log("🚀 ~ file: app.js ~ line 38 ~ verifyToken ~ req.headers.authorization", req.headers.authorization)
+    //  console.log("🚀 ~ file: app.js ~ line 38 ~ verifyToken ~ req.headers.authorization", req.headers.authorization)
     if(!req.headers.authorization)
     {
         return res.status(401).send("UnAuthorized Request")
@@ -18,7 +19,7 @@ function verifyToken(req,res,next){
         return res.status(401).send("UnAuthorized Request")
     }
     let payload = jwt.verify(token,"secretkey")
-    console.log("🚀 ~ file: app.js ~ line 49 ~ verifyToken ~ payload", payload)
+    // console.log("🚀 ~ file: app.js ~ line 49 ~ verifyToken ~ payload", payload)
     if(!payload)
     {   
         return res.status(401).send("UnAuthorized Request");
@@ -28,20 +29,24 @@ function verifyToken(req,res,next){
     console.log(req.userId);
     next();
 }
-router.get("/api/getusers",(req,res)=>{
- res.header("Access-Control-Allow-Origin","*");
- res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH");
-users.find()
+
+//gerusers
+router.get("/getusers",(req,res)=>{
+ try{
+signupdata.find()
 .then(data=>{
     res.send(data);
 })
+ }
+ catch(error){
+    console.log(error);
+ }
 });
 
 
 //signup
-router.post('/api/signup',async(req,res)=>{
- res.header("Access-Control-Allow-Origin","*");
- res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH");
+router.post('/signup',async(req,res)=>{
+try{
 var user ={
     name: req.body.user.name,
     username: req.body.user.email,
@@ -55,6 +60,10 @@ var user ={
 var user = new signupdata(user);
 const saveduser=await user.save();
 console.log('saved data : ',saveduser)
+}
+catch(error){
+    console.log(error);
+}
 })
 router.get('/signuplist',(req,res)=>{
     try{
@@ -70,9 +79,8 @@ router.get('/signuplist',(req,res)=>{
 
 
 //login
-router.post('/api/login',(req,res)=>{
-    res.header("Access-Control-Allow-Origin","*");
-    res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH");
+router.post('/login',(req,res)=>{
+   try{
     let username = req.body.user.email;
     let password = req.body.user.password;
     logindata.findOne({username:req.body.user.email, password:req.body.user.password},(err,user)=>{
@@ -92,8 +100,12 @@ router.post('/api/login',(req,res)=>{
             message:"Invalid credentials"
         });
     });
+}
+catch(error){
+    console.log(error);
+}
 })
 
 
 
-module.exports = router
+module.exports = router;
