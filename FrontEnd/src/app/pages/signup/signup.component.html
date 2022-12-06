@@ -1,10 +1,10 @@
 
  
 <div class="container" >
-  <form class="example-form" (ngSubmit)="onSubmit()">
+  <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="registerForm">
   <mat-card>
         <h1>Sign Up</h1>
-    <div class="row" [formGroup]="registerForm" >
+    <div class="row"  >
         <div class="mb-3">
                 <mat-form-field class="example-full-width" appearance="fill" style="width:100% ;">
                   <mat-label>Name</mat-label>

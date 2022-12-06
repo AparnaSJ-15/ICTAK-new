@@ -62,32 +62,32 @@ export class SignupComponent implements OnInit {
  // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
   onSubmit() {
-    console.log(this.user);
-    if(this.Users.length>=0){
-      for(var i=0;i<=this.Users.length;i++)
-      {
-        if(this.Users[i].username===this.user.username)
+      console.log(this.user)
+      if(this.Users.length>=0){
+        for(var i=0;i<this.Users.length;i++)
         {
-          this.flag=true;
-          this.error = "username already exist";
-          break;
+          if(this.Users[i].username===this.user.username)
+          {
+            this.flag=true;
+            this.error = "username already exist";
+            break;
+          }
+          else
+           this.flag=false;
+          this.loginservice.signup(this.user);
+          console.log("signup called");
+          this.route.navigate(['/login']);
+  
+          
         }
-        else
-         this.flag=false;
-        this.loginservice.signup(this.user);
-        console.log("signup called");
-        this.route.navigate(['/']);
+  
+      }
+     
+      
+      
+  
+    }
 
-  this.submitted = true;
-  // stop here if form is invalid
-  if (this.registerForm.invalid) {
-    return;
-  }
-
-}
-  }
-
-}
  MustMatch(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];
@@ -106,4 +106,7 @@ export class SignupComponent implements OnInit {
       }
   }
 }
+
+
 }
+
