@@ -1,20 +1,14 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const app = new express();
+const app = express();
 require('./middlewares/mongodb') //to init mongoDB
-
 const cors = require('cors');
-
-var bodyparser = require('body-parser');
-
-
 const logger = require('morgan') // for seeing api calls in terminal
+
 app.use(logger('dev'))
 
 //Express Middlewares
 app.use(cors());//to connect frontend and backend without any disturbance
 app.use(express.json());
-app.use(bodyparser.json());
 app.use(express.urlencoded({extended:true}));
 
 
@@ -22,6 +16,7 @@ app.use(express.urlencoded({extended:true}));
 
 const api = require('./routes/api');
 app.use('/api',api);
+
 const requirement = require('./routes/requirement');
 app.use('/requirement',requirement);
 

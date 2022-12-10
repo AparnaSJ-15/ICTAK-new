@@ -1,2 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+<<<<<<< HEAD
 @import '~bootstrap/dist/css/bootstrap.min.css'
+=======
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+>>>>>>> 73b6dbd4d72ac8bd2b5b7fab5f12e3e545be9387
